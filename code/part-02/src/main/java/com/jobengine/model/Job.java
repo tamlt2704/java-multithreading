@@ -1,6 +1,7 @@
 package com.jobengine.model;
 
 import java.time.Instant;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Job {
 
@@ -8,11 +9,11 @@ public class Job {
     private final String name;
     private final Runnable task;
 
-    // ⚠️ BUG: plain field — no thread safety
-    private JobStatus status = JobStatus.PENDING;
-    private Instant startedAt;
-    private Instant completedAt;
-    private String failureReason;
+    // ✅ FIX: AtomicReference instead of plain field
+    private final AtomicReference<JobStatus> status = new AtomicReference<>(JobStatus.PENDING);
+    private volatile Instant startedAt;
+    private volatile Instant completedAt;
+    private volatile String failureReason;
 
     public Job(String id, String name, Runnable task) {
         this.id = id;
@@ -20,31 +21,16 @@ public class Job {
         this.task = task;
     }
 
-    // ⚠️ BUG: check-then-act is NOT atomic
-    /**
-     * Transition the job status if it matches the expected value.
-     *
-     * Valid transitions:
-     *   PENDING → RUNNING     (job picked up by engine)
-     *   RUNNING → COMPLETED   (task finished successfully)
-     *   RUNNING → FAILED      (task threw an exception)
-     *
-     * Returns true if the transition happened, false if the current
-     * status didn't match (job was already in a different state).
-     */
+    // ✅ FIX: CAS fuses check + write into one atomic CPU instruction
     public boolean transitionTo(JobStatus expected, JobStatus next) {
-        if (this.status == expected) {
-            this.status = next;
-            return true;
-        }
-        return false;
+        return status.compareAndSet(expected, next);
     }
 
     // Getters
     public String getId() { return id; }
     public String getName() { return name; }
     public Runnable getTask() { return task; }
-    public JobStatus getStatus() { return status; }
+    public JobStatus getStatus() { return status.get(); }
     public Instant getStartedAt() { return startedAt; }
     public Instant getCompletedAt() { return completedAt; }
     public String getFailureReason() { return failureReason; }
