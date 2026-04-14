@@ -21,6 +21,17 @@ public class Job {
     }
 
     // ⚠️ BUG: check-then-act is NOT atomic
+    /**
+     * Transition the job status if it matches the expected value.
+     *
+     * Valid transitions:
+     *   PENDING → RUNNING     (job picked up by engine)
+     *   RUNNING → COMPLETED   (task finished successfully)
+     *   RUNNING → FAILED      (task threw an exception)
+     *
+     * Returns true if the transition happened, false if the current
+     * status didn't match (job was already in a different state).
+     */
     public boolean transitionTo(JobStatus expected, JobStatus next) {
         if (this.status == expected) {
             this.status = next;
