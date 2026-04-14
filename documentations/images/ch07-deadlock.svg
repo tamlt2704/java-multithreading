@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .hand { font-family: 'Segoe Script', 'Comic Sans MS', cursive; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="#fffef5" rx="12"/>
+  <text x="400" y="35" text-anchor="middle" class="hand" font-size="20" fill="#333">Circular dependency = infinite wait</text>
+  <!-- Job A -->
+  <circle cx="250" cy="180" r="60" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+  <text x="250" y="175" text-anchor="middle" fill="#fff" class="hand" font-size="20">Job A</text>
+  <text x="250" y="198" text-anchor="middle" fill="#cce5ff" class="mono">PENDING</text>
+  <!-- Job B -->
+  <circle cx="550" cy="180" r="60" fill="#e67e22" stroke="#d35400" stroke-width="3"/>
+  <text x="550" y="175" text-anchor="middle" fill="#fff" class="hand" font-size="20">Job B</text>
+  <text x="550" y="198" text-anchor="middle" fill="#ffeaa7" class="mono">PENDING</text>
+  <!-- Arrows forming cycle -->
+  <path d="M310 160 Q400 100 490 160" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#redArrow)"/>
+  <text x="400" y="115" text-anchor="middle" class="hand" font-size="13" fill="#e74c3c">A waits for B</text>
+  <path d="M490 200 Q400 260 310 200" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#redArrow)"/>
+  <text x="400" y="275" text-anchor="middle" class="hand" font-size="13" fill="#e74c3c">B waits for A</text>
+  <!-- Arrowheads -->
+  <defs>
+    <marker id="redArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+    </marker>
+  </defs>
+  <!-- Skull in the middle -->
+  <text x="400" y="195" text-anchor="middle" font-size="40">💀</text>
+  <text x="400" y="230" text-anchor="middle" class="hand" font-size="12" fill="#e74c3c">forever</text>
+  <!-- Fix section -->
+  <line x1="50" y1="310" x2="750" y2="310" stroke="#ddd" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="340" text-anchor="middle" class="hand" font-size="18" fill="#2ecc71">Fix: DFS cycle detection at submit time</text>
+  <!-- Rejected -->
+  <rect x="200" y="360" width="400" height="60" fill="#2ecc71" rx="10"/>
+  <text x="400" y="385" text-anchor="middle" fill="#fff" class="mono" font-size="14">engine.submit(jobB) → returns false ❌</text>
+  <text x="400" y="405" text-anchor="middle" fill="#d5f5e3" class="hand" font-size="13">Circular dependency rejected immediately</text>
+</svg>

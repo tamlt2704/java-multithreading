@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="800" height="500" fill="#1a1a2e" rx="12"/>
+  <!-- Slack notification style -->
+  <rect x="50" y="30" width="700" height="80" fill="#2d2d44" rx="8"/>
+  <circle cx="90" cy="70" r="20" fill="#e74c3c"/>
+  <text x="90" y="76" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">!</text>
+  <text x="120" y="58" fill="#e74c3c" class="cartoon" font-size="16" font-weight="bold">@linus</text>
+  <text x="200" y="58" fill="#ccc" class="cartoon" font-size="14">Customer charged twice. Payment job ran 2x.</text>
+  <text x="120" y="80" fill="#888" class="cartoon" font-size="11">Thursday 3:00 PM</text>
+  <!-- Two threads racing diagram -->
+  <text x="400" y="150" text-anchor="middle" fill="#fff" class="cartoon" font-size="18">The Race Condition</text>
+  <!-- Thread A -->
+  <rect x="100" y="180" width="250" height="30" fill="#3498db" rx="6"/>
+  <text x="225" y="200" text-anchor="middle" fill="#fff" class="mono">Thread A: reads PENDING ✓</text>
+  <rect x="100" y="230" width="250" height="30" fill="#3498db" rx="6"/>
+  <text x="225" y="250" text-anchor="middle" fill="#fff" class="mono">Thread A: writes RUNNING</text>
+  <rect x="100" y="280" width="250" height="30" fill="#e74c3c" rx="6"/>
+  <text x="225" y="300" text-anchor="middle" fill="#fff" class="mono">Thread A: charges $99.99 💳</text>
+  <!-- Thread B -->
+  <rect x="450" y="180" width="250" height="30" fill="#e67e22" rx="6"/>
+  <text x="575" y="200" text-anchor="middle" fill="#fff" class="mono">Thread B: reads PENDING ✓</text>
+  <rect x="450" y="230" width="250" height="30" fill="#e67e22" rx="6"/>
+  <text x="575" y="250" text-anchor="middle" fill="#fff" class="mono">Thread B: writes RUNNING</text>
+  <rect x="450" y="280" width="250" height="30" fill="#e74c3c" rx="6"/>
+  <text x="575" y="300" text-anchor="middle" fill="#fff" class="mono">Thread B: charges $99.99 💳</text>
+  <!-- Arrow showing the gap -->
+  <line x1="390" y1="195" x2="410" y2="195" stroke="#FFD93D" stroke-width="3" stroke-dasharray="5,3"/>
+  <text x="400" y="175" text-anchor="middle" fill="#FFD93D" class="cartoon" font-size="11">same time!</text>
+  <!-- Result -->
+  <rect x="200" y="350" width="400" height="60" fill="#e74c3c" rx="10" opacity="0.9"/>
+  <text x="400" y="378" text-anchor="middle" fill="#fff" class="cartoon" font-size="20">Customer charged: $199.98</text>
+  <text x="400" y="398" text-anchor="middle" fill="#ffcccc" class="cartoon" font-size="14">Expected: $99.99</text>
+  <!-- Panicked intern in corner -->
+  <circle cx="720" cy="440" r="25" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="712" cy="435" r="5" fill="#333"/>
+  <circle cx="728" cy="435" r="5" fill="#333"/>
+  <path d="M710 452 Q720 460 730 452" stroke="#333" stroke-width="2" fill="none" transform="rotate(180,720,452)"/>
+  <text x="720" y="480" text-anchor="middle" fill="#ccc" class="cartoon" font-size="10">oh no</text>
+</svg>

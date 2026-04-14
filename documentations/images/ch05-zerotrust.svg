@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="500" height="180" fill="#1a1a2e" rx="10"/>
+  <!-- 2 AM -->
+  <circle cx="440" cy="35" r="20" fill="#2d2d44" stroke="#FFD93D" stroke-width="1.5"/>
+  <text x="440" y="40" text-anchor="middle" fill="#FFD93D" class="cartoon" font-size="10">2 AM</text>
+  <!-- ZeroTrust character -->
+  <circle cx="60" cy="70" r="25" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="52" cy="66" r="4" fill="#333"/>
+  <circle cx="68" cy="66" r="4" fill="#333"/>
+  <path d="M50,80 Q60,73 70,80" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Sunglasses -->
+  <rect x="44" y="60" width="14" height="9" fill="#333" rx="2"/>
+  <rect x="62" y="60" width="14" height="9" fill="#333" rx="2"/>
+  <line x1="58" y1="64" x2="62" y2="64" stroke="#333" stroke-width="1.5"/>
+  <text x="60" y="115" text-anchor="middle" class="cartoon" font-size="11" fill="#ccc">ZeroTrust</text>
+  <!-- Slack message -->
+  <rect x="110" y="25" width="310" height="55" fill="#3d3d5c" rx="6"/>
+  <text x="120" y="48" class="cartoon" font-size="13" fill="#e74c3c">@ZeroTrust</text>
+  <text x="120" y="68" class="mono" fill="#ccc">Fraud alert took 47 minutes. Why?</text>
+  <text x="120" y="145" class="cartoon" font-size="10" fill="#888">trusts nobody, not even himself</text>
+</svg>

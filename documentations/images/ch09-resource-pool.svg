@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 11px; }
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="#fafafa" rx="12"/>
+  <!-- Bobby Tables character -->
+  <circle cx="80" cy="55" r="25" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="72" cy="50" r="4" fill="#333"/>
+  <circle cx="88" cy="50" r="4" fill="#333"/>
+  <path d="M70 65 Q80 58 90 65" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Bobby's hat -->
+  <rect x="58" y="28" width="44" height="8" fill="#333" rx="2"/>
+  <text x="80" y="100" text-anchor="middle" fill="#333" class="cartoon" font-size="11">Bobby Tables</text>
+  <text x="80" y="113" text-anchor="middle" fill="#888" class="cartoon" font-size="9">(DBA)</text>
+  <!-- Speech -->
+  <rect x="120" y="25" width="320" height="40" fill="#fff" stroke="#333" stroke-width="1.5" rx="12"/>
+  <polygon points="120,45 105,55 130,50" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <polygon points="122,44 108,52 128,49" fill="#fff"/>
+  <text x="280" y="50" text-anchor="middle" class="cartoon" font-size="12" fill="#333">"47 threads blocked on take(). App frozen."</text>
+  <!-- Pool diagram - problem -->
+  <text x="400" y="100" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333">Connection Pool — 5 connections</text>
+  <!-- Connections -->
+  <rect x="100" y="120" width="120" height="35" fill="#e74c3c" rx="6"/>
+  <text x="160" y="142" text-anchor="middle" fill="#fff" class="mono">conn-1 LEAKED</text>
+  <rect x="240" y="120" width="120" height="35" fill="#e74c3c" rx="6"/>
+  <text x="300" y="142" text-anchor="middle" fill="#fff" class="mono">conn-2 LEAKED</text>
+  <rect x="380" y="120" width="120" height="35" fill="#e74c3c" rx="6"/>
+  <text x="440" y="142" text-anchor="middle" fill="#fff" class="mono">conn-3 LEAKED</text>
+  <rect x="520" y="120" width="120" height="35" fill="#e74c3c" rx="6"/>
+  <text x="580" y="142" text-anchor="middle" fill="#fff" class="mono">conn-4 LEAKED</text>
+  <rect x="660" y="120" width="120" height="35" fill="#e74c3c" rx="6"/>
+  <text x="720" y="142" text-anchor="middle" fill="#fff" class="mono">conn-5 LEAKED</text>
+  <!-- Waiting threads -->
+  <text x="400" y="185" text-anchor="middle" fill="#e74c3c" class="cartoon" font-size="13">All connections gone. Threads waiting:</text>
+  <rect x="80" y="200" width="640" height="40" fill="#f5f5f5" stroke="#e74c3c" stroke-width="1.5" rx="6"/>
+  <text x="100" y="225" class="mono" fill="#e74c3c">T-1: take()...</text>
+  <text x="210" y="225" class="mono" fill="#e74c3c">T-2: take()...</text>
+  <text x="320" y="225" class="mono" fill="#e74c3c">T-3: take()...</text>
+  <text x="430" y="225" class="mono" fill="#e74c3c">T-4: take()...</text>
+  <text x="540" y="225" class="mono" fill="#888">... 43 more</text>
+  <text x="400" y="265" text-anchor="middle" fill="#e74c3c" class="cartoon" font-size="12">blocked FOREVER — no timeout, no error, just silence</text>
+  <!-- Fix section -->
+  <line x1="50" y1="290" x2="750" y2="290" stroke="#ddd" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="315" text-anchor="middle" fill="#2ecc71" font-family="Arial" font-size="16" font-weight="bold">Fix: poll(timeout) + fair ordering</text>
+  <!-- Fixed pool -->
+  <rect x="100" y="335" width="120" height="35" fill="#2ecc71" rx="6"/>
+  <text x="160" y="357" text-anchor="middle" fill="#fff" class="mono">conn-1 ✅</text>
+  <rect x="240" y="335" width="120" height="35" fill="#2ecc71" rx="6"/>
+  <text x="300" y="357" text-anchor="middle" fill="#fff" class="mono">conn-2 ✅</text>
+  <rect x="380" y="335" width="120" height="35" fill="#3498db" rx="6"/>
+  <text x="440" y="357" text-anchor="middle" fill="#fff" class="mono">conn-3 in use</text>
+  <rect x="520" y="335" width="120" height="35" fill="#2ecc71" rx="6"/>
+  <text x="580" y="357" text-anchor="middle" fill="#fff" class="mono">conn-4 ✅</text>
+  <rect x="660" y="335" width="120" height="35" fill="#3498db" rx="6"/>
+  <text x="720" y="357" text-anchor="middle" fill="#fff" class="mono">conn-5 in use</text>
+  <text x="400" y="400" text-anchor="middle" fill="#2ecc71" class="mono">poll(500ms) → returns null if unavailable → thread recovers</text>
+  <text x="400" y="425" text-anchor="middle" fill="#2ecc71" class="cartoon" font-size="13">fair=true → longest-waiting thread gets next connection</text>
+</svg>

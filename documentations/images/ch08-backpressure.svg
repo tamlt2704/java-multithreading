@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 11px; }
+    </style>
+  </defs>
+  <rect width="800" height="450" fill="#1a1a2e" rx="12"/>
+  <!-- FiveNines narrating -->
+  <circle cx="60" cy="50" r="22" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="53" cy="46" r="4" fill="#333"/>
+  <circle cx="67" cy="46" r="4" fill="#333"/>
+  <path d="M52 58 Q60 65 68 58" stroke="#333" stroke-width="2" fill="none" transform="rotate(180,60,58)"/>
+  <text x="60" y="85" text-anchor="middle" fill="#ccc" class="cartoon" font-size="10">FiveNines</text>
+  <!-- Memory bar climbing -->
+  <text x="400" y="40" text-anchor="middle" fill="#fff" class="cartoon" font-size="18">Black Friday — Memory climbing</text>
+  <rect x="150" y="60" width="500" height="30" fill="#2d2d44" rx="6"/>
+  <rect x="150" y="60" width="450" height="30" fill="#e74c3c" rx="6"/>
+  <text x="400" y="80" text-anchor="middle" fill="#fff" class="mono">HEAP: 90% ████████████████████░░</text>
+  <!-- Flood of jobs -->
+  <text x="400" y="130" text-anchor="middle" fill="#ccc" class="cartoon" font-size="14">50,000 jobs/sec flooding in</text>
+  <!-- Queue growing -->
+  <rect x="50" y="150" width="700" height="50" fill="#2d2d44" stroke="#e74c3c" stroke-width="2" rx="6"/>
+  <text x="80" y="180" class="mono" fill="#888">job</text>
+  <text x="110" y="180" class="mono" fill="#888">job</text>
+  <text x="140" y="180" class="mono" fill="#888">job</text>
+  <text x="170" y="180" class="mono" fill="#888">job</text>
+  <text x="200" y="180" class="mono" fill="#888">job</text>
+  <text x="230" y="180" class="mono" fill="#888">job</text>
+  <text x="260" y="180" class="mono" fill="#888">job</text>
+  <text x="290" y="180" class="mono" fill="#888">job</text>
+  <text x="320" y="180" class="mono" fill="#888">job</text>
+  <text x="350" y="180" class="mono" fill="#888">job</text>
+  <text x="400" y="180" class="mono" fill="#e74c3c">... 2 million more ...</text>
+  <text x="560" y="180" class="mono" fill="#888">job</text>
+  <text x="590" y="180" class="mono" fill="#888">job</text>
+  <text x="620" y="180" class="mono" fill="#888">job</text>
+  <text x="650" y="180" class="mono" fill="#888">job</text>
+  <text x="680" y="180" class="mono" fill="#888">job</text>
+  <text x="710" y="180" class="mono" fill="#888">job</text>
+  <!-- BOOM -->
+  <text x="400" y="240" text-anchor="middle" font-size="36">💥</text>
+  <text x="400" y="270" text-anchor="middle" fill="#e74c3c" class="cartoon" font-size="16">OutOfMemoryError — JVM crashed</text>
+  <!-- Fix section -->
+  <line x1="50" y1="300" x2="750" y2="300" stroke="#555" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="330" text-anchor="middle" fill="#2ecc71" class="cartoon" font-size="18">Fix: bounded queue + rejection</text>
+  <!-- Bounded queue -->
+  <rect x="150" y="350" width="300" height="40" fill="#2d2d44" stroke="#2ecc71" stroke-width="2" rx="6"/>
+  <text x="170" y="375" class="mono" fill="#2ecc71">job</text>
+  <text x="200" y="375" class="mono" fill="#2ecc71">job</text>
+  <text x="230" y="375" class="mono" fill="#2ecc71">job</text>
+  <text x="260" y="375" class="mono" fill="#2ecc71">job</text>
+  <text x="290" y="375" class="mono" fill="#2ecc71">job</text>
+  <text x="340" y="375" class="mono" fill="#2ecc71">FULL</text>
+  <!-- Rejected job -->
+  <rect x="500" y="350" width="200" height="40" fill="#e74c3c" rx="6" opacity="0.7"/>
+  <text x="600" y="375" text-anchor="middle" fill="#fff" class="mono">new job → rejected ❌</text>
+  <text x="600" y="410" text-anchor="middle" fill="#ccc" class="cartoon" font-size="11">caller gets false, returns 429</text>
+  <text x="300" y="430" text-anchor="middle" fill="#2ecc71" class="cartoon" font-size="13">Memory stays bounded ✅</text>
+</svg>

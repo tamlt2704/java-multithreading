@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="500" height="180" fill="#2d2d44" rx="10"/>
+  <!-- FiveNines character -->
+  <circle cx="60" cy="70" r="25" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="52" cy="66" r="4" fill="#333"/>
+  <circle cx="68" cy="66" r="4" fill="#333"/>
+  <path d="M50,80 Q60,73 70,80" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Headset -->
+  <path d="M38,60 Q38,40 60,40 Q82,40 82,60" stroke="#555" stroke-width="3" fill="none"/>
+  <circle cx="38" cy="63" r="5" fill="#555"/>
+  <circle cx="82" cy="63" r="5" fill="#555"/>
+  <text x="60" y="115" text-anchor="middle" class="cartoon" font-size="11" fill="#ccc">FiveNines</text>
+  <!-- Slack message -->
+  <rect x="110" y="25" width="370" height="55" fill="#3d3d5c" rx="6"/>
+  <text x="120" y="48" class="cartoon" font-size="13" fill="#e74c3c">@FiveNines</text>
+  <text x="120" y="68" class="mono" fill="#ccc">Jobs stuck at "started". No completion time.</text>
+  <text x="120" y="145" class="cartoon" font-size="10" fill="#888">stares at dashboard like it's a sunset</text>
+</svg>

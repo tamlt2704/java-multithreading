@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .hand { font-family: 'Segoe Script', 'Comic Sans MS', cursive; }
+      .mono { font-family: monospace; font-size: 11px; }
+    </style>
+    <filter id="rough2">
+      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="#fffef5" rx="12"/>
+  <text x="400" y="35" text-anchor="middle" class="hand" font-size="20" fill="#333">All workers stuck — zero throughput</text>
+  <!-- Worker boxes -->
+  <rect x="50" y="60" width="160" height="80" fill="#e74c3c" rx="8" filter="url(#rough2)" opacity="0.9"/>
+  <text x="130" y="90" text-anchor="middle" class="hand" font-size="14" fill="#fff">Worker 1</text>
+  <text x="130" y="110" text-anchor="middle" class="mono" fill="#ffcccc">slow API... 💀</text>
+  <text x="130" y="128" text-anchor="middle" class="hand" font-size="10" fill="#ffcccc">10 min and counting</text>
+  <rect x="230" y="60" width="160" height="80" fill="#e74c3c" rx="8" filter="url(#rough2)" opacity="0.9"/>
+  <text x="310" y="90" text-anchor="middle" class="hand" font-size="14" fill="#fff">Worker 2</text>
+  <text x="310" y="110" text-anchor="middle" class="mono" fill="#ffcccc">slow API... 💀</text>
+  <text x="310" y="128" text-anchor="middle" class="hand" font-size="10" fill="#ffcccc">8 min and counting</text>
+  <rect x="410" y="60" width="160" height="80" fill="#e74c3c" rx="8" filter="url(#rough2)" opacity="0.9"/>
+  <text x="490" y="90" text-anchor="middle" class="hand" font-size="14" fill="#fff">Worker 3</text>
+  <text x="490" y="110" text-anchor="middle" class="mono" fill="#ffcccc">infinite loop 💀</text>
+  <text x="490" y="128" text-anchor="middle" class="hand" font-size="10" fill="#ffcccc">forever</text>
+  <rect x="590" y="60" width="160" height="80" fill="#e74c3c" rx="8" filter="url(#rough2)" opacity="0.9"/>
+  <text x="670" y="90" text-anchor="middle" class="hand" font-size="14" fill="#fff">Worker 4</text>
+  <text x="670" y="110" text-anchor="middle" class="mono" fill="#ffcccc">deadlocked 💀</text>
+  <text x="670" y="128" text-anchor="middle" class="hand" font-size="10" fill="#ffcccc">forever</text>
+  <!-- Queue below -->
+  <rect x="100" y="180" width="600" height="50" fill="#f5f5f5" stroke="#ddd" stroke-width="2" rx="8" filter="url(#rough2)"/>
+  <text x="130" y="210" class="mono" fill="#333">🚨CRIT</text>
+  <text x="200" y="210" class="mono" fill="#333">HIGH</text>
+  <text x="260" y="210" class="mono" fill="#333">NORM</text>
+  <text x="330" y="210" class="mono" fill="#333">NORM</text>
+  <text x="400" y="210" class="mono" fill="#333">NORM</text>
+  <text x="470" y="210" class="mono" fill="#888">...</text>
+  <text x="530" y="210" class="mono" fill="#333">LOW</text>
+  <text x="590" y="210" class="mono" fill="#333">LOW</text>
+  <text x="660" y="210" class="mono" fill="#333">LOW</text>
+  <text x="400" y="255" text-anchor="middle" class="hand" font-size="14" fill="#e74c3c">↑ nobody pulling from queue ↑</text>
+  <!-- Fix section -->
+  <line x1="50" y1="290" x2="750" y2="290" stroke="#ddd" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="315" text-anchor="middle" class="hand" font-size="18" fill="#2ecc71">Fix: per-job timeout</text>
+  <!-- Fixed workers -->
+  <rect x="50" y="340" width="160" height="60" fill="#2ecc71" rx="8" filter="url(#rough2)"/>
+  <text x="130" y="365" text-anchor="middle" class="hand" font-size="13" fill="#fff">Worker 1</text>
+  <text x="130" y="385" text-anchor="middle" class="mono" fill="#d5f5e3">TIMED_OUT → freed</text>
+  <rect x="230" y="340" width="160" height="60" fill="#2ecc71" rx="8" filter="url(#rough2)"/>
+  <text x="310" y="365" text-anchor="middle" class="hand" font-size="13" fill="#fff">Worker 2</text>
+  <text x="310" y="385" text-anchor="middle" class="mono" fill="#d5f5e3">processing next job</text>
+  <rect x="410" y="340" width="160" height="60" fill="#2ecc71" rx="8" filter="url(#rough2)"/>
+  <text x="490" y="365" text-anchor="middle" class="hand" font-size="13" fill="#fff">Worker 3</text>
+  <text x="490" y="385" text-anchor="middle" class="mono" fill="#d5f5e3">TIMED_OUT → freed</text>
+  <rect x="590" y="340" width="160" height="60" fill="#2ecc71" rx="8" filter="url(#rough2)"/>
+  <text x="670" y="365" text-anchor="middle" class="hand" font-size="13" fill="#fff">Worker 4</text>
+  <text x="670" y="385" text-anchor="middle" class="mono" fill="#d5f5e3">processing next job</text>
+  <text x="400" y="430" text-anchor="middle" class="hand" font-size="14" fill="#2ecc71">Workers freed after timeout → queue drains again ✅</text>
+</svg>

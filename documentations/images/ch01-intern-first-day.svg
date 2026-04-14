@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350">
+  <defs>
+    <style>
+      .talk { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 16px; }
+      .think { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 14px; fill: #888; }
+      .name { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 13px; fill: #555; }
+      .narrator { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 11px; fill: #aaa; font-style: italic; }
+    </style>
+  </defs>
+
+  <rect width="600" height="350" fill="#fafafa" rx="10"/>
+
+  <!-- ===== LINUS (left) ===== -->
+  <!-- Head (big, round, slightly too big for body = funny) -->
+  <circle cx="140" cy="175" r="45" fill="#FFD93D" stroke="#333" stroke-width="2.5"/>
+  <!-- Messy eyebrows (thick, expressive) -->
+  <path d="M108,155 Q120,145 132,158" stroke="#333" stroke-width="3" fill="none"/>
+  <path d="M150,155 Q162,143 172,155" stroke="#333" stroke-width="3" fill="none"/>
+  <!-- Eyes (tiny dots = deadpan confident) -->
+  <circle cx="122" cy="170" r="3" fill="#333"/>
+  <circle cx="158" cy="170" r="3" fill="#333"/>
+  <!-- Big smug grin -->
+  <path d="M115,190 Q140,208 165,190" stroke="#333" stroke-width="2.5" fill="none"/>
+  <!-- Body (tiny compared to head) -->
+  <line x1="140" y1="220" x2="140" y2="275" stroke="#333" stroke-width="2.5"/>
+  <!-- Arms (one pointing at intern) -->
+  <line x1="140" y1="245" x2="105" y2="260" stroke="#333" stroke-width="2.5"/>
+  <line x1="140" y1="245" x2="200" y2="235" stroke="#333" stroke-width="2.5"/>
+  <!-- Pointing finger -->
+  <line x1="200" y1="235" x2="215" y2="232" stroke="#333" stroke-width="2"/>
+  <!-- Legs -->
+  <line x1="140" y1="275" x2="125" y2="315" stroke="#333" stroke-width="2.5"/>
+  <line x1="140" y1="275" x2="155" y2="315" stroke="#333" stroke-width="2.5"/>
+  <!-- Coffee mug in other hand -->
+  <rect x="88" y="255" width="18" height="16" fill="#fff" stroke="#333" stroke-width="1.5" rx="2"/>
+  <path d="M106,259 Q113,262 106,270" stroke="#333" stroke-width="1.5" fill="none"/>
+  <!-- Steam -->
+  <path d="M93,252 Q91,245 96,240" stroke="#ccc" stroke-width="1" fill="none"/>
+  <path d="M100,250 Q102,243 99,238" stroke="#ccc" stroke-width="1" fill="none"/>
+  <!-- Name -->
+  <text x="140" y="338" text-anchor="middle" class="name">Linus</text>
+
+  <!-- ===== INTERN (right) ===== -->
+  <!-- Head (normal sized, looks small next to Linus' giant head) -->
+  <circle cx="420" cy="190" r="30" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <!-- Eyes (normal, calm, confident) -->
+  <circle cx="410" cy="187" r="4" fill="#333"/>
+  <circle cx="430" cy="187" r="4" fill="#333"/>
+  <!-- Confident smile -->
+  <path d="M410,202 Q420,210 430,202" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Body -->
+  <line x1="420" y1="220" x2="420" y2="275" stroke="#333" stroke-width="2"/>
+  <!-- Arms (thumbs up) -->
+  <line x1="420" y1="240" x2="455" y2="228" stroke="#333" stroke-width="2"/>
+  <line x1="455" y1="228" x2="458" y2="218" stroke="#333" stroke-width="2"/>
+  <line x1="420" y1="240" x2="390" y2="258" stroke="#333" stroke-width="2"/>
+  <!-- Legs -->
+  <line x1="420" y1="275" x2="405" y2="315" stroke="#333" stroke-width="2"/>
+  <line x1="420" y1="275" x2="435" y2="315" stroke="#333" stroke-width="2"/>
+  <!-- Name -->
+  <text x="420" y="338" text-anchor="middle" class="name">You (intern)</text>
+
+  <!-- ===== SPEECH BUBBLE (Linus) ===== -->
+  <rect x="20" y="40" width="260" height="75" fill="#fff" stroke="#333" stroke-width="2" rx="15"/>
+  <polygon points="145,115 135,140 165,115" fill="#fff" stroke="#333" stroke-width="2"/>
+  <polygon points="147,114 137,136 163,114" fill="#fff"/>
+  <text x="150" y="68" text-anchor="middle" class="talk" fill="#333">I need a job engine.</text>
+  <text x="150" y="95" text-anchor="middle" class="talk" fill="#333">I know it's simple.</text>
+
+  <!-- ===== THOUGHT BUBBLE (Intern) ===== -->
+  <ellipse cx="485" cy="95" rx="75" ry="28" fill="#fff" stroke="#bbb" stroke-width="1.5"/>
+  <circle cx="458" cy="130" r="6" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <circle cx="448" cy="148" r="4" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="485" y="100" text-anchor="middle" class="think">sure, how hard</text>
+  <text x="485" y="115" text-anchor="middle" class="think">can it be</text>
+
+  <!-- ===== NARRATOR ===== -->
+</svg>

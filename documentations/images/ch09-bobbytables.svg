@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="500" height="180" fill="#2d2d44" rx="10"/>
+  <!-- Bobby Tables character -->
+  <circle cx="60" cy="70" r="25" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="52" cy="66" r="4" fill="#333"/>
+  <circle cx="68" cy="66" r="4" fill="#333"/>
+  <path d="M50,80 Q60,86 70,80" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Baseball cap -->
+  <path d="M38,55 Q60,45 82,55" fill="#333" stroke="#333" stroke-width="1"/>
+  <rect x="35" y="53" width="50" height="6" fill="#333" rx="2"/>
+  <rect x="75" y="50" width="18" height="6" fill="#333" rx="2"/>
+  <text x="60" y="115" text-anchor="middle" class="cartoon" font-size="11" fill="#ccc">Bobby Tables</text>
+  <!-- Slack message -->
+  <rect x="110" y="25" width="370" height="55" fill="#3d3d5c" rx="6"/>
+  <text x="120" y="48" class="cartoon" font-size="13" fill="#e74c3c">@BobbyTables</text>
+  <text x="120" y="68" class="mono" fill="#ccc">47 threads blocked on take(). App frozen.</text>
+  <text x="120" y="145" class="cartoon" font-size="10" fill="#888">once dropped a prod table during a demo</text>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380">
+  <defs>
+    <style>
+      .label { font-family: monospace; font-size: 13px; fill: #e0e0e0; }
+      .arrow-label { font-family: monospace; font-size: 10px; fill: #aaa; }
+      .title { font-family: monospace; font-size: 15px; fill: #fff; font-weight: bold; }
+      .subtitle { font-family: monospace; font-size: 11px; fill: #888; }
+      .step { font-family: monospace; font-size: 11px; fill: #ccc; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#888"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#2ecc71"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#e74c3c"/>
+    </marker>
+  </defs>
+
+  <rect width="700" height="380" fill="#1a1a2e" rx="10"/>
+
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" class="title">Job Lifecycle — State Transitions</text>
+
+  <!-- ═══════════════ STATE BOXES ═══════════════ -->
+
+  <!-- PENDING -->
+  <rect x="40" y="60" width="120" height="44" rx="8" fill="#2c3e50" stroke="#f39c12" stroke-width="2"/>
+  <text x="100" y="87" text-anchor="middle" class="label">PENDING</text>
+
+  <!-- RUNNING -->
+  <rect x="280" y="60" width="120" height="44" rx="8" fill="#2c3e50" stroke="#3498db" stroke-width="2"/>
+  <text x="340" y="87" text-anchor="middle" class="label">RUNNING</text>
+
+  <!-- COMPLETED -->
+  <rect x="530" y="40" width="130" height="44" rx="8" fill="#1a3a2a" stroke="#2ecc71" stroke-width="2"/>
+  <text x="595" y="67" text-anchor="middle" class="label">COMPLETED</text>
+
+  <!-- FAILED -->
+  <rect x="530" y="100" width="130" height="44" rx="8" fill="#3a1a1a" stroke="#e74c3c" stroke-width="2"/>
+  <text x="595" y="127" text-anchor="middle" class="label">FAILED</text>
+
+  <!-- ═══════════════ ARROWS ═══════════════ -->
+
+  <!-- PENDING → RUNNING -->
+  <line x1="160" y1="82" x2="275" y2="82" stroke="#888" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="218" y="74" text-anchor="middle" class="arrow-label">transitionTo()</text>
+
+  <!-- RUNNING → COMPLETED -->
+  <line x1="400" y1="72" x2="525" y2="62" stroke="#2ecc71" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="462" y="56" text-anchor="middle" class="arrow-label">task succeeds</text>
+
+  <!-- RUNNING → FAILED -->
+  <line x1="400" y1="92" x2="525" y2="118" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="462" y="118" text-anchor="middle" class="arrow-label">task throws</text>
+
+  <!-- ═══════════════ EXAMPLE TRACE ═══════════════ -->
+
+  <line x1="40" y1="170" x2="660" y2="170" stroke="#333" stroke-width="1"/>
+  <text x="350" y="195" text-anchor="middle" class="subtitle">Example: engine.submit(job)</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="210" width="180" height="50" rx="6" fill="#2c2c44"/>
+  <text x="50" y="230" class="step">1. status == PENDING?</text>
+  <text x="50" y="245" class="step" fill="#2ecc71">   yes → set RUNNING</text>
+
+  <!-- Step 2 -->
+  <rect x="240" y="210" width="180" height="50" rx="6" fill="#2c2c44"/>
+  <text x="250" y="230" class="step">2. startedAt = now()</text>
+  <text x="250" y="245" class="step">   task.run()</text>
+
+  <!-- Step 3a: success -->
+  <rect x="440" y="210" width="220" height="50" rx="6" fill="#1a3a2a"/>
+  <text x="450" y="230" class="step" fill="#2ecc71">3a. no exception</text>
+  <text x="450" y="245" class="step" fill="#2ecc71">    → set COMPLETED</text>
+
+  <!-- Step 3b: failure -->
+  <rect x="440" y="275" width="220" height="50" rx="6" fill="#3a1a1a"/>
+  <text x="450" y="295" class="step" fill="#e74c3c">3b. exception caught</text>
+  <text x="450" y="310" class="step" fill="#e74c3c">    → set FAILED</text>
+
+  <!-- Arrows between steps -->
+  <line x1="220" y1="235" x2="237" y2="235" stroke="#888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="228" x2="437" y2="228" stroke="#2ecc71" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="420" y1="248" x2="437" y2="293" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+  <!-- Step 4 -->
+  <rect x="40" y="340" width="620" height="28" rx="6" fill="#2c2c44"/>
+  <text x="350" y="359" text-anchor="middle" class="step">4. completedAt = now()  — always runs, success or failure</text>
+</svg>

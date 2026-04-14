@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <defs>
+    <style>
+      .hand { font-family: 'Segoe Script', 'Comic Sans MS', cursive; }
+      .mono { font-family: monospace; font-size: 11px; }
+      .label { font-family: monospace; font-size: 10px; }
+    </style>
+    <filter id="sketch">
+      <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2"/>
+    </filter>
+    <marker id="greenArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2ecc71"/>
+    </marker>
+  </defs>
+  <rect width="800" height="550" fill="#fffef5" rx="12"/>
+  <text x="400" y="30" text-anchor="middle" class="hand" font-size="22" fill="#333">The Final Architecture</text>
+  <text x="400" y="50" text-anchor="middle" class="hand" font-size="12" fill="#888">every fix from chapters 2-9</text>
+  <!-- Producers -->
+  <rect x="250" y="65" width="300" height="45" fill="#3498db" rx="10" filter="url(#sketch)"/>
+  <text x="400" y="92" text-anchor="middle" class="hand" font-size="15" fill="#fff">Producers (multiple threads)</text>
+  <!-- Arrow down -->
+  <line x1="400" y1="110" x2="400" y2="135" stroke="#2ecc71" stroke-width="3" marker-end="url(#greenArrow)"/>
+  <!-- Submit box -->
+  <rect x="150" y="140" width="500" height="100" fill="#f0f4f8" stroke="#3498db" stroke-width="2" rx="10" filter="url(#sketch)"/>
+  <text x="400" y="165" text-anchor="middle" class="hand" font-size="15" fill="#333">submit(job)</text>
+  <text x="220" y="190" class="label" fill="#e67e22">Ch.7 → DFS cycle detection</text>
+  <text x="220" y="205" class="label" fill="#e74c3c">Ch.8 → backpressure check</text>
+  <text x="220" y="220" class="label" fill="#3498db">Ch.5 → PriorityBlockingQueue.offer()</text>
+  <text x="530" y="190" class="label" fill="#9b59b6">Ch.4 → LongAdder metrics</text>
+  <text x="530" y="205" class="label" fill="#2ecc71">Ch.2 → CAS validation</text>
+  <!-- Arrow down -->
+  <line x1="400" y1="240" x2="400" y2="265" stroke="#2ecc71" stroke-width="3" marker-end="url(#greenArrow)"/>
+  <!-- Queue -->
+  <rect x="150" y="270" width="500" height="55" fill="#FFD93D" stroke="#f39c12" stroke-width="2" rx="10" filter="url(#sketch)"/>
+  <text x="400" y="295" text-anchor="middle" class="hand" font-size="14" fill="#333">PriorityBlockingQueue</text>
+  <text x="400" y="312" text-anchor="middle" class="label" fill="#666">bounded · thread-safe · priority ordered · FIFO within level</text>
+  <!-- Arrow down -->
+  <line x1="400" y1="325" x2="400" y2="350" stroke="#2ecc71" stroke-width="3" marker-end="url(#greenArrow)"/>
+  <!-- Workers -->
+  <rect x="100" y="355" width="600" height="120" fill="#f0f4f8" stroke="#2ecc71" stroke-width="2" rx="10" filter="url(#sketch)"/>
+  <text x="400" y="380" text-anchor="middle" class="hand" font-size="15" fill="#333">Worker Threads (virtual threads)</text>
+  <text x="180" y="405" class="label" fill="#333">poll() from queue</text>
+  <text x="180" y="420" class="label" fill="#e67e22">Ch.7 → check dependencies met</text>
+  <text x="180" y="435" class="label" fill="#3498db">Ch.2 → CAS: PENDING → RUNNING</text>
+  <text x="180" y="450" class="label" fill="#e74c3c">Ch.6 → execute with timeout</text>
+  <text x="480" y="405" class="label" fill="#2ecc71">Ch.2 → CAS: RUNNING → COMPLETED</text>
+  <text x="480" y="420" class="label" fill="#9b59b6">Ch.4 → update metrics (LongAdder)</text>
+  <text x="480" y="435" class="label" fill="#1abc9c">Ch.3 → volatile timestamps</text>
+  <text x="480" y="450" class="label" fill="#e67e22">Ch.9 → resource pool (fair)</text>
+  <!-- Bottom -->
+  <rect x="200" y="500" width="400" height="35" fill="#2ecc71" rx="8"/>
+  <text x="400" y="522" text-anchor="middle" class="hand" font-size="15" fill="#fff">26 tests · 300 lines · shipped ✅</text>
+</svg>

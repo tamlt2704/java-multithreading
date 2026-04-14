@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <style>
+      .cartoon { font-family: 'Comic Sans MS', cursive, sans-serif; }
+      .mono { font-family: monospace; font-size: 12px; }
+    </style>
+  </defs>
+  <rect width="800" height="500" fill="#fafafa" rx="12"/>
+  <!-- TicketMaster character -->
+  <circle cx="100" cy="80" r="28" fill="#FFD93D" stroke="#333" stroke-width="2"/>
+  <circle cx="90" cy="75" r="5" fill="#333"/>
+  <circle cx="110" cy="75" r="5" fill="#333"/>
+  <path d="M88 92 Q100 85 112 92" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Glasses -->
+  <rect x="82" y="68" width="16" height="12" fill="none" stroke="#333" stroke-width="1.5" rx="3"/>
+  <rect x="102" y="68" width="16" height="12" fill="none" stroke="#333" stroke-width="1.5" rx="3"/>
+  <line x1="98" y1="74" x2="102" y2="74" stroke="#333" stroke-width="1"/>
+  <text x="100" y="130" text-anchor="middle" class="cartoon" font-size="13" fill="#333">TicketMaster</text>
+  <text x="100" y="145" text-anchor="middle" class="cartoon" font-size="10" fill="#888">(PM)</text>
+  <!-- Speech bubble -->
+  <rect x="160" y="40" width="350" height="50" fill="#fff" stroke="#333" stroke-width="2" rx="16"/>
+  <polygon points="160,65 140,80 175,70" fill="#fff" stroke="#333" stroke-width="2"/>
+  <polygon points="162,64 143,77 173,69" fill="#fff"/>
+  <text x="335" y="62" text-anchor="middle" class="cartoon" font-size="13" fill="#333">"Where did 3,000 jobs go?!"</text>
+  <text x="335" y="78" text-anchor="middle" class="cartoon" font-size="11" fill="#e74c3c">Expected: 100,000 | Got: 97,342</text>
+  <!-- The interleaving diagram -->
+  <text x="400" y="130" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333">Why count++ loses increments</text>
+  <!-- Thread A column -->
+  <rect x="80" y="155" width="280" height="30" fill="#3498db" rx="4"/>
+  <text x="220" y="175" text-anchor="middle" fill="#fff" class="mono">Thread A: READ count → 5</text>
+  <rect x="80" y="195" width="280" height="30" fill="none" stroke="#3498db" stroke-width="1" stroke-dasharray="4,3" rx="4"/>
+  <rect x="80" y="235" width="280" height="30" fill="#3498db" rx="4"/>
+  <text x="220" y="255" text-anchor="middle" fill="#fff" class="mono">Thread A: ADD → 6</text>
+  <rect x="80" y="275" width="280" height="30" fill="#3498db" rx="4"/>
+  <text x="220" y="295" text-anchor="middle" fill="#fff" class="mono">Thread A: WRITE count = 6</text>
+  <!-- Thread B column -->
+  <rect x="440" y="155" width="280" height="30" fill="none" stroke="#e67e22" stroke-width="1" stroke-dasharray="4,3" rx="4"/>
+  <rect x="440" y="195" width="280" height="30" fill="#e67e22" rx="4"/>
+  <text x="580" y="215" text-anchor="middle" fill="#fff" class="mono">Thread B: READ count → 5</text>
+  <rect x="440" y="235" width="280" height="30" fill="#e67e22" rx="4"/>
+  <text x="580" y="255" text-anchor="middle" fill="#fff" class="mono">Thread B: ADD → 6</text>
+  <rect x="440" y="275" width="280" height="30" fill="#e67e22" rx="4"/>
+  <text x="580" y="295" text-anchor="middle" fill="#fff" class="mono">Thread B: WRITE count = 6</text>
+  <!-- Arrow showing same read -->
+  <path d="M360 170 L440 210" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="410" y="180" class="cartoon" font-size="10" fill="#e74c3c">same value!</text>
+  <!-- Result -->
+  <rect x="150" y="330" width="500" height="50" fill="#e74c3c" rx="8"/>
+  <text x="400" y="352" text-anchor="middle" fill="#fff" class="mono" font-size="14">2 increments happened → count went from 5 to 6 (not 7)</text>
+  <text x="400" y="370" text-anchor="middle" fill="#ffcccc" class="mono">One increment LOST</text>
+  <!-- Fix -->
+  <rect x="150" y="410" width="500" height="60" fill="#2ecc71" rx="8"/>
+  <text x="400" y="435" text-anchor="middle" fill="#fff" font-family="Arial" font-size="15" font-weight="bold">Fix: LongAdder</text>
+  <text x="400" y="458" text-anchor="middle" fill="#d5f5e3" class="mono">Each core increments its own cell → sum() = exact total</text>
+</svg>
